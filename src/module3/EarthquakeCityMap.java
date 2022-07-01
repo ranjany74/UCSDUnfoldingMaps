@@ -24,7 +24,7 @@ import parsing.ParseFeed;
 /** EarthquakeCityMap
  * An application with an interactive map displaying earthquake data.
  * Author: UC San Diego Intermediate Software Development MOOC team
- * @author Your name here
+ * @author Ranjan Yadav
  * Date: July 17, 2015
  * */
 public class EarthquakeCityMap extends PApplet {
@@ -120,12 +120,18 @@ public class EarthquakeCityMap extends PApplet {
 	    // Rather than comparing the magnitude to a number directly, compare 
 	    // the magnitude to these variables (and change their value in the code 
 	    // above if you want to change what you mean by "moderate" and "light")
-	    if(mag >= THRESHOLD_MODERATE)
+	    if(mag >= THRESHOLD_MODERATE) {
 	    	marker.setColor(red);
-	    else if(mag < THRESHOLD_MODERATE && mag >= THRESHOLD_LIGHT)
+	    	marker.setRadius(10);
+	    }
+	    else if(mag < THRESHOLD_MODERATE && mag >= THRESHOLD_LIGHT) {
 	    	marker.setColor(yellow);
-	    else
+	    	marker.setRadius(5);
+	    }
+	    else {
 	    	marker.setColor(grey);
+	    	marker.setRadius(2);
+	    }
 	    
 	    // Finally return the marker
 	    return marker;
@@ -143,6 +149,25 @@ public class EarthquakeCityMap extends PApplet {
 	private void addKey() 
 	{	
 		// Remember you can use Processing's graphics methods here
+		fill(255, 250, 240);
+		rect(25, 50, 150, 250);
+		
+		fill(0);
+		textAlign(LEFT, CENTER);
+		textSize(12);
+		text("Earthquake Key", 50, 75);
+		
+		fill(color(255, 0, 0));
+		ellipse(50, 125, 15, 15);
+		fill(color(255, 255, 0));
+		ellipse(50, 175, 10, 10);
+		fill(color(0, 0, 255));
+		ellipse(50, 225, 5, 5);
+		
+		fill(0, 0, 0);
+		text("5.0+ Magnitude", 75, 125);
+		text("4.0+ Magnitude", 75, 175);
+		text("Below 4.0", 75, 225);
 	
 	}
 }
